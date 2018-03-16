@@ -1,4 +1,4 @@
-const v = new 　Vue({
+const v = new Vue({
     el: '#warp',
     data: {
         pics: [
@@ -15,11 +15,7 @@ const v = new 　Vue({
             { k: 6, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtegwcrvj206j086aal.jpg', id: 11, select: false, alive: false, done: false },
             { k: 6, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtegwcrvj206j086aal.jpg', id: 12, select: false, alive: false, done: false },
         ],
-        active: function () {
-
-
-        },
-
+        ableStart:true,
         judge: {
             a: '',
             b1: '',
@@ -32,32 +28,40 @@ const v = new 　Vue({
             ms: 0
         },
 
-        blockit:false,
-        highscore:{
+        blockit: false, //控制遮住页面的透明div是否显示，防止手速过快
+        highscore: {
             min: '00',
             ss: '00',
             ms: '00'
-        }
-
+        },
     },
-    computed:{
-            ss:function(){
-                if(this.time.ss < 10){
-                    return '0'+this.time.ss;
-                }else{
-                    return this.time.ss;
-                }                
-            },
-            ms:function(){
-                if(this.time.ms < 10){
-                    return '0'+this.time.ms;
-                }else{
-                    return this.time.ms;
-                } 
+    //太蠢了 用filter
+    // },
+    // computed:{
+    //         ss:function(){
+    //             if(this.time.ss < 10){
+    //                 return '0'+this.time.ss;
+    //             }else{
+    //                 return this.time.ss;
+    //             }                
+    //         },                         
+    //         ms:function(){
+    //             if(this.time.ms < 10){
+    //                 return '0'+this.time.ms;
+    //             }else{
+    //                 return this.time.ms;
+    //             } 
 
+    //         }
+
+    filters: {
+        toDoubleNum: function (num) {
+            if (num < 10) {
+                return '0' + num;
+            } else {
+                return num;
             }
-      
-
+        }
     },
     methods: {
         start: function () {
@@ -66,23 +70,23 @@ const v = new 　Vue({
             this.pics.sort(function () { return Math.random() > 0.5 ? 1 : -1; }).
                 sort(function () { return Math.random() > 0.5 ? 1 : -1; }).
                 sort(function () { return Math.random() > 0.5 ? 1 : -1; });
-
+            
             clearInterval(v.count);
             for (let i in this.pics) {
-                
                 this.pics[i].done = false;
                 this.pics[i].select = true;
                 this.judge.n = 0;
 
             }
-
+            v.ableStart = false;
             setTimeout(function () {
-
+              
                 for (let i in v.pics) {
                     v.pics[i].select = false;
                     v.pics[i].alive = true;
                 }
                 v.timer(true);
+                v.ableStart = true;
             }, 1000);
 
 
@@ -104,11 +108,11 @@ const v = new 　Vue({
 
                     v.judge.b1.alive = false;
                     v.judge.b2.alive = false;
-                    setTimeout(function(){
+                    setTimeout(function () {
                         v.judge.b1.done = true;
                         v.judge.b2.done = true;
-                    },300);
-                    
+                    }, 300);
+
 
                     v.judge.a = '';
 
@@ -158,13 +162,13 @@ const v = new 　Vue({
                 clearInterval(v.count);
             }
         },
-        refresh:function(){
-            let x = this.time.min*60000 + this.time.ss*100 + this.time.ms;
-            let y = this.highscore.min*60000 + this.highscore.ss*100 + this.highscore.ms;
-            if(x < y || y == 0){
-               for(let i in this.highscore){
+        refresh: function () {
+            let x = this.time.min * 60000 + this.time.ss * 100 + this.time.ms;
+            let y = this.highscore.min * 60000 + this.highscore.ss * 100 + this.highscore.ms;
+            if (x < y || y == 0) {
+                for (let i in this.highscore) {
                     this.highscore[i] = this.time[i];
-               }
+                }
             }
 
         }
