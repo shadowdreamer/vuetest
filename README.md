@@ -1,2 +1,2 @@
 # vuetest
-some practical of vue
+some practices of vue
