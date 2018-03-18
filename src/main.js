@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import App from './Puzzle.vue'
+import Vue from 'vue';
+import App from './components/Puzzle.vue';
 
 new Vue({
   el: '#puzzle',
