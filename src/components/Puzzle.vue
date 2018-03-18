@@ -43,10 +43,10 @@ export default {
             ],
         ableStart:true,
         judge: {
-            a: '',
-            b1: '',
-            b2: '',
-            n: 0
+            a: '',       //记录活跃中被选中卡牌的k值
+            b1: '',     //指向第一个被翻开的元素
+            b2: '',    //指向第二个被翻开的元素
+            n: 0      //翻开卡牌计数
         },
         time: {
             min: 0,
@@ -83,6 +83,9 @@ export default {
                 this.pics[i].done = false;
                 this.pics[i].select = true;
                 this.judge.n = 0;
+                this.judge.a = '';
+                this.judge.b1 = '';
+                this.judge.b2 = '';
             }
             _this.ableStart = false;
             setTimeout(function () {
@@ -110,9 +113,11 @@ export default {
 
                   this.judge.b1.alive = false;
                   this.judge.b2.alive = false;
+                  this.blockit = true;
                   setTimeout(function () {
                       _this.judge.b1.done = true;
                       _this.judge.b2.done = true;
+                      _this.blockit = false;
                   }, 300);
 
 
