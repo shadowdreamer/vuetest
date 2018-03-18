@@ -180,7 +180,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
  * {
         margin: 0px;
         padding: 0px;
@@ -201,7 +201,7 @@ export default {
         }
     }
 
-    @media screen and (min-width: 320px) {
+    @media screen and (min-width: 200px) {
 
         .box {
             
