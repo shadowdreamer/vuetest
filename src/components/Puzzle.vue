@@ -11,7 +11,7 @@
               @click='(pic.alive && !pic.select) && doit(pic)' class='cover' :class='{rollback: pic.select}'>
                 <div class='back'></div>
                 <div class='front'>
-                    <img :src="pic.p" :alt="index">
+                    <img :src="require(`@/assets/${pic.p}.jpg`)" :alt="index">
                 </div>
                 <div v-if='pic.done' class="bingo"></div>
             </div>
@@ -28,18 +28,18 @@ export default {
     data(){
       return {
         pics: [
-            { k: 1, p: 'https://wx3.sinaimg.cn/mw690/69924d1bgy1fpdtejy26ij206o08bwhb.jpg',select: false, alive: false, done: false },
-            { k: 1, p: 'https://wx3.sinaimg.cn/mw690/69924d1bgy1fpdtejy26ij206o08bwhb.jpg',select: false, alive: false, done: false },
-            { k: 2, p: 'https://wx1.sinaimg.cn/mw690/69924d1bgy1fpdteje2hvj206i08376c.jpg',select: false, alive: false, done: false },
-            { k: 2, p: 'https://wx1.sinaimg.cn/mw690/69924d1bgy1fpdteje2hvj206i08376c.jpg',select: false, alive: false, done: false },
-            { k: 3, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdteiqsl1j206y08q0w2.jpg',select: false, alive: false, done: false },
-            { k: 3, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdteiqsl1j206y08q0w2.jpg',select: false, alive: false, done: false },
-            { k: 4, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtei0f48j206y08nq4t.jpg',select: false, alive: false, done: false },
-            { k: 4, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtei0f48j206y08nq4t.jpg',select: false, alive: false, done: false },
-            { k: 5, p: 'https://wx2.sinaimg.cn/mw690/69924d1bgy1fpdtehg5ynj206o08cta3.jpg',select: false, alive: false, done: false },
-            { k: 5, p: 'https://wx2.sinaimg.cn/mw690/69924d1bgy1fpdtehg5ynj206o08cta3.jpg', select: false, alive: false, done: false },
-            { k: 6, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtegwcrvj206j086aal.jpg', select: false, alive: false, done: false },
-            { k: 6, p: 'https://wx4.sinaimg.cn/mw690/69924d1bgy1fpdtegwcrvj206j086aal.jpg', select: false, alive: false, done: false },
+            { k: 1, p: 'aimi',select: false, alive: false, done: false },
+            { k: 1, p: 'aimi',select: false, alive: false, done: false },
+            { k: 2, p: 'haruka',select: false, alive: false, done: false },
+            { k: 2, p: 'haruka',select: false, alive: false, done: false },
+            { k: 3, p: 'iyori',select: false, alive: false, done: false },
+            { k: 3, p: 'iyori',select: false, alive: false, done: false },
+            { k: 4, p: 'konomi',select: false, alive: false, done: false },
+            { k: 4, p: 'konomi',select: false, alive: false, done: false },
+            { k: 5, p: 'serika',select: false, alive: false, done: false },
+            { k: 5, p: 'serika', select: false, alive: false, done: false },
+            { k: 6, p: 'takane', select: false, alive: false, done: false },
+            { k: 6, p: 'takane', select: false, alive: false, done: false },
             ],
         ableStart:true,
         judge: {
@@ -281,8 +281,7 @@ export default {
         min-height: 100px;
         min-width: 80px;
         border-radius: 3px;
-
-        background-image: url(https://wx2.sinaimg.cn/mw690/69924d1bgy1fpdteklyuxj206o08cq4l.jpg);
+        background-image: url('~@/assets/back.jpg');
         background-repeat: no-repeat;
         background-size: 80px 100px;
         backface-visibility: hidden;
